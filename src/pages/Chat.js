@@ -1,6 +1,8 @@
 import React, {Component} from "react"
 import {auth} from "../services/firebase"
 import {db} from "../services/firebase"
+import LogOut from "../components/logOut"
+import firebase from 'firebase/app'
 
 export default class Chat extends Component{
     constructor(props) {
@@ -13,7 +15,7 @@ export default class Chat extends Component{
             writeError: null,
         }
         this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     async componentDidMount() {
@@ -35,7 +37,7 @@ export default class Chat extends Component{
           content: event.target.value
         });
       }
-
+    
       async handleSubmit(event) {
         event.preventDefault();
         this.setState({ writeError: null });
@@ -43,7 +45,8 @@ export default class Chat extends Component{
           await db.ref("chats").push({
             content: this.state.content,
             timestamp: Date.now(),
-            uid: this.state.user.uid
+            uid: this.state.user.uid,
+            userName: this.state.user.email
           });
           this.setState({ content: '' });
         } catch (error) {
@@ -57,7 +60,7 @@ export default class Chat extends Component{
               <div className="chats">
                   {this.state.chats.content}
                 {this.state.chats.map(chats => {
-                  return <p key={chats.timestamp}>  {chats.content}</p>
+                  return <p key={chats.timestamp}> {chats.userName} -- {chats.content}</p>
                 })}
               </div>
               
@@ -67,8 +70,9 @@ export default class Chat extends Component{
                 <button type="submit">Send</button>
               </form>
               <div>
-                Login in as: <strong>{this.state.user.email}</strong>
+                Logged in as: <strong>{this.state.user.email}</strong>
               </div>
+              <LogOut/>
             </div>
           );
     }

@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { auth } from './services/firebase';
 
+
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
     <Route

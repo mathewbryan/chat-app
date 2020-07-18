@@ -36,9 +36,9 @@ export default class Login extends Component {
               onSubmit={this.handleSubmit}
             >
               <h1>
-                Login to
-                <Link to="/">
-                  Chat
+                Login to    
+                <Link to="/ ">
+                    Chat
                 </Link>
               </h1>
               <p>
