@@ -56,12 +56,14 @@ export default class Chat extends Component{
 
     render(){
         return (
-            <div>
-              <div className="chats">
+          <div>
+            <div className="chat-area">
+              <div >
                   {this.state.chats.content}
                 {this.state.chats.map(chats => {
-                  return <p key={chats.timestamp}> {chats.userName} -- {chats.content}</p>
+                  return <p className={"chat-bubble " + (this.state.user.uid === chats.uid ? "current-user" : "")} key={chats.timestamp}> {chats.userName} -- {chats.content}</p>
                 })}
+                </div>
               </div>
               
               <form onSubmit={this.handleSubmit}>
@@ -74,6 +76,7 @@ export default class Chat extends Component{
               </div>
               <LogOut/>
             </div>
+           
           );
     }
 }

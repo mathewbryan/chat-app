@@ -1,0 +1,18 @@
+.chat-area {
+    padding: 20px;
+    height: 400px;
+    overflow-y: scroll;
+  }
+
+  .chat-area .chat-bubble {
+    background-color: #bbdefb;
+    padding: 20px;
+    border-radius: 4px;
+    max-width: 300px;
+    word-wrap: break-word;
+  }
+
+  .chat-area .chat-bubble.current-user {
+    margin-left: auto;
+    background-color: #a5d6a7;
+  }
