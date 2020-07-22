@@ -10,7 +10,7 @@ export default class LogOut extends Component {
             <div className="" id="">
             {auth().currentUser
               ? <div className="navbar-nav">
-                <Link className="" to="/chat">Profile</Link>
+                <Link className="" to="/chat"></Link>
                 <button className="btn btn-primary mr-3" onClick={() => auth().signOut()}>Logout</button>
               </div>
               : <div className="navbar-nav">

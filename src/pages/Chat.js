@@ -3,6 +3,7 @@ import {auth} from "../services/firebase"
 import {db} from "../services/firebase"
 import LogOut from "../components/logOut"
 import firebase from 'firebase/app'
+import Header from "../components/header"
 
 export default class Chat extends Component{
     constructor(props) {
@@ -57,6 +58,7 @@ export default class Chat extends Component{
     render(){
         return (
           <div>
+            <Header />
             <div className="chat-area">
               <div >
                   {this.state.chats.content}
@@ -66,8 +68,8 @@ export default class Chat extends Component{
                 </div>
               </div>
               
-              <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} value={this.state.content}></input>
+              <form onSubmit={this.handleSubmit} className="chat-entry">
+                <input onChange={this.handleChange} value={this.state.content} className="text-enter"></input>
                 {this.state.error ? <p>{this.state.writeError}</p> : null}
                 <button type="submit">Send</button>
               </form>
